@@ -54,7 +54,7 @@ Unity와 C#을 학습하며 개발하는
 - 바닥 / 이동 불가 영역 분리
 - Tilemap Collider 2D를 이용한 맵 충돌
 - 플레이어 추적 카메라
-# 무료 임시 캐릭터 에셋 적용
+#### 무료 임시 캐릭터 에셋 적용
 - Idle / Walk 애니메이션
 - Animator 상태 전환
 - C#과 Animator 연결
