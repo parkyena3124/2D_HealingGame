@@ -8,17 +8,19 @@ public class PlayerMove : MonoBehaviour
 
     Vector2 wasdMove; //캐릭터 이동
     Rigidbody2D playerRigidbody;
-    
+    Animator playerAnimator;
+    SpriteRenderer spriteX;
+
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
+        playerAnimator = GetComponent<Animator>();
+        spriteX = GetComponent<SpriteRenderer>();
     }
     
     void Update()
     {
         wasdMove = Vector2.zero;
-        //wasdMove.x = 0f;
-        //wasdMove.y = 0f;
 
         if (Keyboard.current.dKey.isPressed)
         {
@@ -40,9 +42,22 @@ public class PlayerMove : MonoBehaviour
             wasdMove.y = -1f;
         }
         wasdMove = wasdMove.normalized;
-        //transform.position = transform.position +
-        //    (new Vector3(wasdMove.x, wasdMove.y, 0f) * playerSpeed * Time.deltaTime);
-        //FixedUpdate가 역할을 대신 해줌
+        if (wasdMove != Vector2.zero)
+        {
+            playerAnimator.SetBool("playerMoving", true);
+        }
+        else
+        {
+            playerAnimator.SetBool("playerMoving", false);
+        }
+        if (wasdMove.x < 0f)
+        {
+            spriteX.flipX = true;
+        }
+        else if (wasdMove.x > 0f)
+        {
+            spriteX.flipX = false;
+        }
     }
 
     void FixedUpdate()
